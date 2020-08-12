@@ -1,12 +1,33 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <main>
+      <nav>
+        <Navbar/>
+      </nav>
+
+      <section class="container-fluid content">
+        <router-view></router-view>
+      </section>
+
+      <footer>
+        <Footer />
+      </footer>
+
+    </main>
   </div>
 </template>
+
+<script>
+  import Navbar from "../src/components/Navbar/Index"
+  import Footer from "../src/components/Footer/Index"
+  export default{
+    name: "App",
+    components:{
+      Navbar,
+      Footer
+    }
+  }
+</script>
 
 <style>
 #app {
@@ -29,4 +50,7 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+  .content{
+    margin-top: 10%;
+  }
 </style>
