@@ -1,6 +1,8 @@
 <template>
-  <section class="container">
-    <router-view></router-view>
+  <section class="Masse">
+    <article>
+      <h1>Masse</h1>
+    </article>
   </section>
 </template>
 
@@ -8,6 +10,6 @@
 // @ is an alias to /src
 
 export default {
-  name: 'Home'
+  name: 'Masse'
 }
 </script>

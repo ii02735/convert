@@ -1,35 +1,24 @@
 <template>
   <div id="app">
-    <main>
-      <nav>
-        <Navbar/>
-      </nav>
-
-      <section class="container-fluid content">
-        <router-view></router-view>
-      </section>
-
-      <footer>
-        <Footer />
-      </footer>
-
-    </main>
+    <AppLayout>
+      <router-view></router-view>
+    </AppLayout>
   </div>
 </template>
 
 <script>
-  import Navbar from "../src/components/Navbar/Index"
-  import Footer from "../src/components/Footer/Index"
+  import AppLayout from "@/components/Utils/AppLayout";
   export default{
     name: "App",
-    components:{
-      Navbar,
-      Footer
-    }
+    components:{AppLayout}
   }
 </script>
 
 <style>
+:root {
+  --app-primary-color: #24c8a6;
+  --app-secondary-color: #232935;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -51,6 +40,7 @@
   color: #42b983;
 }
   .content{
-    margin-top: 10%;
+    margin-top: 150px;
+    min-height: 43rem;
   }
 </style>
