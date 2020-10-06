@@ -1,22 +1,49 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Bootstrap from 'bootstrap-vue';
 
-Vue.use(Bootstrap);
 Vue.use(VueRouter);
 
   const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
+    name: 'home',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue'),
+    children:[
+      {
+        path: '',
+        name: 'home',
+        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Description'),
+      },
+      {
+        path: 'devise',
+        name: 'devise',
+        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Devise'),
+      },
+      {
+        path: 'distance',
+        name: 'distance',
+        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Distance'),
+      },
+      {
+        path: 'masse',
+        name: 'masse',
+        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Masse'),
+      },
+      {
+        path: 'resolution',
+        name: 'resolution',
+        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Resolution'),
+      },
+      {
+        path: 'oumar-marega',
+        name: 'me',
+        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/AboutMe'),
+      }
+    ]
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
+    path: "*",
+    redirect: "/"
   }
 ]
 
