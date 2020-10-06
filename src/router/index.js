@@ -1,12 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import * as VeeValidate from 'vee-validate';
 
 Vue.use(VueRouter);
+Vue.use(VeeValidate);
+
 
   const routes = [
   {
     path: '/',
-    name: 'home',
+    name: '',
     component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue'),
     children:[
       {
@@ -15,22 +18,27 @@ Vue.use(VueRouter);
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Description'),
       },
       {
-        path: 'devise',
+        path: 'convertir-base',
+        name: 'base',
+        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Devise'),
+      },
+      {
+        path: 'convertir-devise',
         name: 'devise',
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Devise'),
       },
       {
-        path: 'distance',
+        path: 'convertir-distance',
         name: 'distance',
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Distance'),
       },
       {
-        path: 'masse',
+        path: 'convertir-masse',
         name: 'masse',
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Masse'),
       },
       {
-        path: 'resolution',
+        path: 'convertir-resolution',
         name: 'resolution',
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Resolution'),
       },

@@ -11,6 +11,9 @@
 
                 <div class="collapse navbar-collapse" id="navbarColor02">
                     <ul class="navbar-nav mr-auto">
+                      <li class="nav-item">
+                        <router-link class="nav-link" :to="{name:'base'}">Base</router-link>
+                      </li>
                         <li class="nav-item">
                             <router-link class="nav-link" :to="{name:'devise'}">Devise </router-link>
                         </li>
@@ -24,10 +27,11 @@
                             <router-link class="nav-link" :to="{name:'resolution'}">Résolution</router-link>
                         </li>
                     </ul>
-                    <form class="form-inline my-2 my-lg-0" data-children-count="1">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
+                    <ul class="navbar-nav " data-children-count="1">
+                      <li class="nav-item">
+                        <router-link class="nav-link" :to="{name:'me'}">Qui suis je ? </router-link>
+                      </li>
+                    </ul>
                 </div>
             </article>
         </nav>
