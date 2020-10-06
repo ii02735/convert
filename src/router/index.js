@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Bootstrap from 'bootstrap-vue';
 
-Vue.use(Bootstrap);
 Vue.use(VueRouter);
 
   const routes = [

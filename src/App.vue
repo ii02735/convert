@@ -40,7 +40,7 @@
   color: #42b983;
 }
   .content{
-    margin-top: 150px;
+    margin-top: 125px;
     min-height: 43rem;
   }
 </style>
