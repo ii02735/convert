@@ -18,29 +18,44 @@ Vue.use(VeeValidate);
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Description'),
       },
       {
-        path: 'convertir-base',
+        path: 'convertissuer-base',
         name: 'base',
-        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Devise'),
+        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Base'),
       },
       {
-        path: 'convertir-devise',
+        path: 'convertisseur-devise',
         name: 'devise',
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Devise'),
       },
       {
-        path: 'convertir-distance',
+        path: 'convertisseur-distance-km-mm',
         name: 'distance',
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Distance'),
       },
       {
-        path: 'convertir-masse',
+        path: 'convertisseur-masse-kg-mg',
         name: 'masse',
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Masse'),
       },
       {
-        path: 'convertir-resolution',
+        path: 'convertisseur-resolution-px-rem',
         name: 'resolution',
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Resolution'),
+      },
+      {
+        path: 'convertisseur-lettre-majuscule-minuscule',
+        name: 'lettre',
+        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Lettre'),
+      },
+      {
+        path: 'hash-sha-mdp-bcrypt',
+        name: 'hash',
+        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Hash'),
+      },
+      {
+        path: 'generer-mot-de-passe',
+        name: 'generate-password',
+        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/GeneratePassword'),
       },
       {
         path: 'oumar-marega',
@@ -59,6 +74,11 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  window.scrollTo(0, 0)
+  next()
 })
 
 export default router

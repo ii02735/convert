@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="mb-5" >
     <h3 class="mb-5">Convertissez vos devises en toute simplicité </h3>
     <Layout>
       <div class="container">
@@ -13,7 +13,7 @@
           <div class="col-sm p-3 p-sm-3">
             <model-select :options="array_devise"
                           v-model="from_value"
-                          class="form">
+                          class="form pt-3">
             </model-select>
           </div>
           <div class="col-sm p-3 p-sm-3">
@@ -22,7 +22,7 @@
           <div class="col-sm p-3 p-sm-3">
             <model-select :options="array_devise"
                           v-model="to_value"
-                          class="selected">
+                          class="form pt-3">
             </model-select>
           </div>
           <div class="col-sm p-3 p-sm-3">
@@ -81,7 +81,6 @@ export default {
     }
   },
   mounted(){
-
     const tab_devise =Object.values(devise.results);
     this.array_devise = tab_devise.map(item => {
          return {
@@ -114,6 +113,6 @@ export default {
   background-color: var(--app-secondary-color);
 }
 .form{
-  min-height: 50px;
+  min-height: 50px !important;
 }
 </style>
