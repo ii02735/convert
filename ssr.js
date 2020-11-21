@@ -1,30 +1,34 @@
 const puppeteer = require('puppeteer');
 const fs = require("fs");
 
-import routes from "@/router";
-// on définit une liste de constantes utilitaires 
+const modules = require('./src/router/routes');
+//const routes = modules.routes;
+//const routes = ["http://localhost:8080/"];
+// on définit une liste de constantes utilitaires
 // cette constante permet de définir le dossier dans lequel mes fichier seront enregistrés
-const buildDir = "build";
+const buildDir = "dist";
 
 // celle-ci permet de déterminer le domaine
 const domain = "http://localhost:5000";
 
 // celle-ci permet de stocker les routes (url) à examiner
-//const routes = ["http://localhost:5000/"];
+const routes = ["http://localhost:5000/devise"];
 
 // celle-ci stocke les routes (url) déjà examinées
 const visited = [];
 
 // cette fonction permet de faire un rendu d'une route (url)
-// et d'en enregistrer le contenu dans un fichier. 
-// l'ensemble des liens (<a></a>) du conenu sont récupérés 
-// et si leur propriétés href pointe avec un lien non visité 
+// et d'en enregistrer le contenu dans un fichier.
+// l'ensemble des liens (<a></a>) du conenu sont récupérés
+// et si leur propriétés href pointe avec un lien non visité
 // alors elles sont rajouté au tableau de routes à visiter
 const ssr = async () => {
-    
+
     // on définit l'url à visiter, il s'agit du premier élément du tableau de routes
     // que l'on extirpe de ce dernier à l'aide de la méthode shift des objets de type tableau
     const url = routes.shift();
+
+    console.log(url);
 
     // on détermine le chemin par rapport à la racine du domaine
     const path = url.replace(domain, "");
@@ -58,27 +62,27 @@ const ssr = async () => {
     fs.writeFileSync(filepath, html);
 
     // Ici, on récupère l'ensemble des liens contenus dans la page
-    // on évalue la page, çàd qu'on lance une fonctionnalité permettant 
+    // on évalue la page, çàd qu'on lance une fonctionnalité permettant
     // d'analyser l'ensemble du document html.
-    const links = await page.evaluate( 
-        // Ici on récupère l'ensemble des balises a 
-        // ce qui nous retourne une NodeList que l'on convertit en tableau 
-        // à l'aide de Array.from. 
-        // Une fois notre tableau obtenu, on peut utiliser la méthode map 
-        // des objets de type Array afin de retourner un tableau 
+    const links = await page.evaluate(
+        // Ici on récupère l'ensemble des balises a
+        // ce qui nous retourne une NodeList que l'on convertit en tableau
+        // à l'aide de Array.from.
+        // Une fois notre tableau obtenu, on peut utiliser la méthode map
+        // des objets de type Array afin de retourner un tableau
         // contenant uniquement les href de nos balises <a>
         () => Array.from(document.querySelectorAll("a"))
                     .map( link => link.href )
-                    
-    ); 
+
+    );
 
     // Ici on crée un tableau d'url non visités
     // Pour cela on filtre le tableau de liens précédemment crée
-    // et on ne retourne que ceux qui ne sont PAS présents au sein du 
-    // tableau d'url visitées. 
+    // et on ne retourne que ceux qui ne sont PAS présents au sein du
+    // tableau d'url visitées.
     const unvisited = links.filter( href => visited.indexOf(href) === -1 && routes.indexOf(href) === -1 );
 
-    // On pousse à l'intérieur de notre tableau de routes l'ensemble des urls 
+    // On pousse à l'intérieur de notre tableau de routes l'ensemble des urls
     // non visitées obtenues précédemment.
     routes.push(...unvisited);
 
@@ -87,12 +91,12 @@ const ssr = async () => {
     // on ferme le navigateur
     await browser.close();
 
-    // Si le tableau de routes contient encore une route alors 
+    // Si le tableau de routes contient encore une route alors
     // on relance la fonction ssr dans 100 ms
     if( routes.length > 0)
         setTimeout( ssr, 100 );
-    
-    
+
+
 }
 
 
