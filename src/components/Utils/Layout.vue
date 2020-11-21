@@ -1,9 +1,9 @@
 <template>
-  <sectioncl>
+  <section>
     <article class="layout container">
         <slot></slot>
     </article>
-  </sectioncl>
+  </section>
 </template>
 <script>
 export default {

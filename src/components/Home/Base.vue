@@ -1,25 +1,18 @@
 <template>
-  <section class="mb-5" >
-    <h3 class="mb-5">Convertisseur de px à rem </h3>
+  <section class="mb-5">
+    <h3 class="mb-5">Convertissez vos nombres en binaire, quaternaire, octal, décimal et héxadécimal </h3>
     <Layout>
       <div class="container">
         <div class="row">
           <div class="col-sm pt-5 p-3 p-sm-3">
-            <h5>Calcul basé sur un font-size de : <input class="col-1 base-font" v-model="data.base_font"  name="base_font" v-validate="'required|numeric|min_value:1'" placeholder="Ex: 101" type="text"></h5>
-            <div v-if="isError" class=" text-center mt-3 alert alert-danger" role="alert">
-              {{errors.first('base_font')}}
-            </div>
-          </div>
-          <div class="w-100" ></div>
-          <div class="col-sm p-3 p-sm-3">
-            <input class="form-control form" v-model="data.value"  name="value" v-validate="'required|numeric'" placeholder="Ex: 100" type="text">
+            <input class="form-control form" v-model="data.value"  name="value" v-validate="'required'" placeholder="Ex: 101" type="text">
             <div v-if="isError" class=" mt-3 alert alert-danger" role="alert">
-              {{errors.first('value')}}
+              {{msg}}
             </div>
           </div>
           <div class="col-sm p-3 p-sm-3">
-            <model-select :options="resolution"
-                          v-model="data.from_resolution"
+            <model-select :options="base"
+                          v-model="data.from_base"
                           class="form pt-3">
             </model-select>
           </div>
@@ -27,8 +20,8 @@
             <input class="form-control form" value="to" type="text" readonly>
           </div>
           <div class="col-sm p-3 p-sm-3">
-            <model-select :options="resolution"
-                          v-model="data.to_resolution"
+            <model-select :options="base"
+                          v-model="data.to_base"
                           class="form pt-3">
             </model-select>
           </div>
@@ -47,54 +40,70 @@
 
 <script>
 import Layout from "@/components/Utils/Layout";
-import {ModelSelect} from "vue-search-select";
+import { ModelSelect } from 'vue-search-select'
+
 export default {
-  name: 'Distance',
+  name: 'Base',
   components: {Layout,ModelSelect},
   data(){
     return{
       result:null,
       data:{
         value:null,
-        from_resolution:'px',
-        to_resolution:'rem',
-        base_font:16,
+        from_base:2,
+        to_base:10,
       },
-      resolution:[
+      base:[
         {
-          value:'px',
-          text:'PX'
+          value:2,
+          text:'Binaire'
         },
         {
-          value:'rem',
-          text:'REM'
+          value:4,
+          text:'Quartenaire'
         },
+        {
+          value:8,
+          text:'Octal'
+        },
+        {
+          value:10,
+          text:'Décimal'
+        },
+        {
+          value:16,
+          text:'Héxadécimal'
+        }
       ],
       isError: false,
-      isErrorBase: false
+      msg:''
     }
   },
   methods:{
     convert(){
+      const self = this;
       this.$validator.validateAll().then(result => {
         if (result) {
-          if(this.data.from_resolution === 'px')
-            this.result = this.px_to_rem();
-          if(this.data.from_resolution === 'rem')
-            this.result = this.rem_to_px();
+          this.$axios.get(`${this.$own_api_url}/api/convert`,{
+            params: {
+              value: this.data.value,
+              from_base: this.data.from_base,
+              to_base: this.data.to_base
+            }})
+              .then(function (response) {
+               self.result = response.data.result
+                self.isError = false;
+              })
+              .catch(() => {
+                this.isError = true;
+                this.msg = this.data.value + ' n\'est pas une valeur de la base ' + this.data.from_base
+              });
         }
         else
         {
           this.isError = true;
-          this.isErrorBase = true
         }
       });
-    },
-    px_to_rem(){
-      return (this.data.value/this.data.base_font).toFixed(3)
-    },
-    rem_to_px(){
-      return (this.data.value*this.data.base_font).toFixed(3)
     }
   }
 }
@@ -119,10 +128,4 @@ export default {
 .form{
   min-height: 50px !important;
 }
-.base-font{
-  width: 3.5rem;
-  font-size: 1rem;
-}
 </style>
-
-
