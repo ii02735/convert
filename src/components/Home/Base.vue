@@ -84,7 +84,7 @@ export default {
       const self = this;
       this.$validator.validateAll().then(result => {
         if (result) {
-          this.$axios.get(`${this.$own_api_url}/convert`,{
+          this.$axios.get(`${this.$own_api_url}/api/convert`,{
             params: {
               value: this.data.value,
               from_base: this.data.from_base,

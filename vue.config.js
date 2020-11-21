@@ -3,7 +3,7 @@ module.exports = {
         prerenderSpa: {
             registry: undefined,
             renderRoutes: [
-                "/", "convertissuer-base", "convertisseur-devise", "convertisseur-distance-km-mm", "convertisseur-masse-kg-mg", "convertisseur-resolution-px-rem", "oumar-marega"
+                "/"
             ],
             useRenderEvent: true,
             headless: true,
@@ -18,3 +18,5 @@ module.exports = {
         }
     }
 }
+
+//                "/", "convertissuer-base", "convertisseur-devise", "convertisseur-distance-km-mm", "convertisseur-masse-kg-mg", "convertisseur-resolution-px-rem", "oumar-marega"
