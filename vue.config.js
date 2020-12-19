@@ -1,5 +1,17 @@
-module.exports = {
+const CompressionPlugin = require('compression-webpack-plugin');
 
+module.exports = {
+    configureWebpack: {
+        plugins: [
+            new CompressionPlugin({
+                filename: '[path].gz[query]',
+                algorithm: 'gzip',
+                test: /\.(js|css|html|svg)$/,
+                threshold: 10240,
+                minRatio: 0.8
+            })
+        ]
+    }
 }
 
 //                "/", "convertissuer-base", "convertisseur-devise", "convertisseur-distance-km-mm", "convertisseur-masse-kg-mg", "convertisseur-resolution-px-rem", "oumar-marega"

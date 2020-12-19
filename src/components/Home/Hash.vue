@@ -15,8 +15,6 @@
           <div class="w-100"></div>
           <div class="col-sm text-left p-3 p-sm-3"><button type="button" @click="sha" class="btn btn-primary btn-sm mr-5">Crypter en sha256</button></div>
           <div class="col-sm text-left p-3 p-sm-3"><button type="button" @click="md5" class="btn btn-primary btn-sm mr-5">Crypter en md5</button></div>
-          <!--<div class="col-sm text-left p-3 p-sm-3"><button type="button" @click="hmacSha" class="btn btn-primary btn-sm mr-5">Crypter en hmacSHA512</button></div>
-          <div class="col-sm text-left p-3 p-sm-3"><button type="button" @click="base" class="btn btn-primary btn-sm mr-5">Crypter en Base64</button></div>-->
           <div class="col-sm text-left p-3 p-sm-3"><button type="button" @click="aes" class="btn btn-primary btn-sm mr-5">Crypter en AES</button></div>
         </div>
       </div>
@@ -48,25 +46,6 @@ export default {
           this.isError = false;
         }
         else this.isError= true;
-      });
-    },
-    hmacSha(){
-      this.$validator.validateAll().then(result => {
-        if (result) {
-          this.text = hmacSHA512(this.text,"Secret Passphrase");
-          console.log(this.text)
-          this.isError = false;
-        }
-        else this.isError = true;
-      });
-    },
-    base(){
-      this.$validator.validateAll().then(result => {
-        if (result) {
-          this.text = Base64.parse(this.text);
-          this.isError = false;
-        }
-        else this.isError = true;
       });
     },
     md5(){

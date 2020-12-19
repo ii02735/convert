@@ -1,17 +1,17 @@
 <template>
-  <section class="mb-5">
+  <section class="mb-5 c-text ">
     <article class="layout-me container">
       <div class="container">
 
         <div class="row">
           <div class="col-sm pt-5 p-3 p-sm-3 mt-3 text-left">
-            <img src="../../assets/logo.png"> MAREGA Oumar
+            <img width="30" height="30" src="../../assets/logo.png" alt="me"> MAREGA Oumar
           </div>
 
           <div class="w-100 mb-3"></div>
 
           <div class="col-sm p-3 p-sm-3 text-left">
-            <p>Je suis MAREGA Oumar, actuellement en dernier année de master 2 expert informatique & systéme d'information : spécialité
+            <p>Je suis MAREGA Oumar, actuellement en dernière année de master 2 expert informatique & système d'informations : spécialité
               Architecte web et big data.
             </p>
             <p>
@@ -23,7 +23,7 @@
           <div class="w-100 mb-3"></div>
 
           <div class="col-sm p-3 p-sm-3">
-            <h4 class="text-left">Mon stack technique du moment</h4>
+            <h4 class="text-left">Ma stack technique du moment</h4>
             <hr>
             <div class="accordion" id="accordionExample">
               <div class="card">
@@ -40,6 +40,7 @@
                     <ul>
                       <li>Laravel</li>
                       <li>Node js</li>
+                      <li>Python</li>
                       <li>Symfony</li>
                     </ul>
                   </div>
@@ -86,9 +87,9 @@
           <div class="w-100 mb-3"></div>
 
           <div class="col-sm p-3 p-sm-3 text-left">
-            <h4 class="text-left">Autes langages</h4>
+            <h4 class="text-left">Autes languages</h4>
             <hr>
-            <span class="" >Avant de me spécialiser plus dans le dévelopement web et mobile avec des langauages comme <strong>PHP</strong> et <strong>javascript</strong>, jusqu'en Licence Informatique mes projets étaient principalement basés sur des langages comme : </span>
+            <span class="" >Avant de me spécialiser plus dans le développement web et mobile avec des languages comme <strong>PHP</strong> et <strong>javascript</strong>, jusqu'en Licence Informatique mes projets étaient principalement basés sur des langages comme : </span>
             <ul>
               <li>C/C++</li>
               <li>Java</li>
@@ -104,16 +105,11 @@
           </div>
           <div class="w-100" ></div>
           <div class="col-sm p-3 p-sm-3 text-left">
-            <div id="linkedin" class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="fr_FR" data-type="vertical" data-theme="dark" data-vanity="oumar-marega"><a target="_blank" class="LI-simple-link" href='https://www.linkedin.com/in/oumar-marega?trk=profile-badge'>Oumar MAREGA</a></div>
+            <div id="linkedin" class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="fr_FR" data-type="horizontal" data-theme="dark" data-vanity="oumar-marega"><a target="_blank" class="LI-simple-link" href='https://www.linkedin.com/in/oumar-marega?trk=profile-badge'>Oumar MAREGA</a></div>
           </div>
-          <div class="col-sm p-3 p-sm-3 text-left">
-            <div>
-              <github-card id="github" data-theme="dark" data-user="OUMAREGA"></github-card>
-            </div>
+          <div class="col-sm force p-3 p-sm-3 text-left">
+            <div id="github-profile-card" data-id="OUMAREGA" data-background="#303336" data-color="white" data-is-circle-image="true" data-name="🎉" data-width="400" data-height="1080"  />
           </div>
-
-
-
 
         </div>
 
@@ -164,7 +160,6 @@
 </template>
 <script>
 import postscribe from 'postscribe';
-import '@rocktimsaikia/github-card'
 export default {
   name:"AboutMe",
   data() {
@@ -199,7 +194,7 @@ export default {
   },
   mounted() {
     postscribe('#linkedin', '<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer><\/script>')
-    //postscribe('#github-profile-card',   '<script src="https://unpkg.com/github-profile-card-component@latest/lib/scripts/index.js" async defer><\/script>')
+    postscribe('#github-profile-card', '<script type="text/javascript" src="https://unpkg.com/github-profile-card-component@latest/lib/scripts/index.js" async defer><\/script>')
   }
 }
 </script>
@@ -241,5 +236,14 @@ input[type=text], select, textarea {
 
 .btn-send:hover {
   background-color: var(--app-secondary-color);
+}
+
+
+.github-profile-card {
+  background-color: red !important;
+}
+.c-text{
+  font-size: 20px;
+  font-family: Avenir, Helvetica, Arial, monospace;
 }
 </style>
