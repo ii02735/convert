@@ -1,5 +1,5 @@
 <template>
-  <section class="mb-5">
+  <section class="mb-5 c-text">
     <h3 class="mb-5">Convertissez vos nombres en binaire, quaternaire, octal, décimal et héxadécimal </h3>
     <Layout>
       <div class="container">
@@ -127,5 +127,9 @@ export default {
 }
 .form{
   min-height: 50px !important;
+}
+.c-text{
+  font-size: 20px;
+  font-family: Avenir, Helvetica, Arial, monospace;
 }
 </style>

@@ -63,28 +63,11 @@ export default {
 }
 </script>
 <style scoped>
-/*@media (min-width: 578px) {
-  .row{
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-  }
-}*/
 .btn-primary{
   background-color: var(--app-primary-color);
 }
 .btn-primary:hover{
   background-color: var(--app-secondary-color);
-}
-.form{
-  min-height: 50px;
-}
-.base-font{
-  width: 3.5rem;
-  font-size: 1rem;
 }
 </style>
 

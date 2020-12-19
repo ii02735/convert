@@ -88,9 +88,8 @@ export default {
            value: item.currencyId
          }
     })
-   // this.array_devise.filter((v,i,a)=>a.findIndex(t=>(t.name === v.name && t.id===v.id))===i)
-    this.array_devise = [...new Map(this.array_devise.map(item => [item.value, item])).values()] // delete doublon
 
+    this.array_devise = [...new Map(this.array_devise.map(item => [item.value, item])).values()] // delete doublon
     this.array_devise.sort((a, b) => (a.text > b.text) ? 1 : -1)
   }
 }

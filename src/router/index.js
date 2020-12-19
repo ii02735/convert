@@ -18,7 +18,7 @@ Vue.use(VeeValidate);
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Description'),
       },
       {
-        path: 'convertissuer-base',
+        path: 'convertisseur-base',
         name: 'base',
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Base'),
       },
