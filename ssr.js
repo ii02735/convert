@@ -41,12 +41,8 @@ const ssr = async () => {
                 visited.push(url);
 
                 // on crée une nouvelle instance d'un navigateur
-                // en gros, on ouvre chrome (mais en ligne degit  commande)
-                const browser = await puppeteer.launch({
-                        headless: true,
-                        executablePath: '/usr/bin/chromium-browser',
-                        args: ['--no-sandbox', '--disable-setuid-sandbox']
-                });
+                // en gros, on ouvre chrome (mais en ligne de commande)
+                const browser = await puppeteer.launch();
 
                 // on crée une nouvelle page (on ouvre un nouvel onglet)
                 const page = await browser.newPage();
