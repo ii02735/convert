@@ -24,7 +24,7 @@ export default {
   .layout{
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)

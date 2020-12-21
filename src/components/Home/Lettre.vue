@@ -15,7 +15,7 @@
           <div class="w-100"></div>
           <div class="col-sm text-left p-3 p-sm-3">
             <button type="button" @click="upperText" class="btn btn-primary btn-lg mr-5">Convertir en majuscule</button>
-            <button type="button" @click="lowerText" class="btn btn-primary btn-lg">Convertir en minuscule</button>
+            <button type="button" @click="lowerText" class="btn btn-primary btn-lg mt-2 mt-md-0 mt-lg-0">Convertir en minuscule</button>
           </div>
         </div>
       </div>
@@ -65,9 +65,13 @@ export default {
 <style scoped>
 .btn-primary{
   background-color: var(--app-primary-color);
+  min-width: 30px;
 }
 .btn-primary:hover{
   background-color: var(--app-secondary-color);
+}
+textarea {
+  resize: none;
 }
 </style>
 

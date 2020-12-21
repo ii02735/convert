@@ -58,6 +58,11 @@ Vue.use(VeeValidate);
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/GeneratePassword'),
       },
       {
+        path: 'correcteur-orthographique-traduction',
+        name: 'reverso',
+        component: () => import(/* webpackChunkName: "about" */ '@/components/Home/Reverso'),
+      },
+      {
         path: 'oumar-marega',
         name: 'me',
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/AboutMe'),

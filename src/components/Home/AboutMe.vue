@@ -3,14 +3,14 @@
     <article class="layout-me container">
       <div class="container">
 
-        <div class="row">
-          <div class="col-sm pt-5 p-3 p-sm-3 mt-3 text-left">
-            <img width="30" height="30" src="../../assets/logo.png" alt="me"> MAREGA Oumar
+        <div class="row text-justify">
+          <div class="col-sm pt-5 p-3 p-sm-3 mt-3 text-center avatar">
+            <img width="30" height="30" src="../../assets/avatar.jpg" alt="me">
           </div>
 
           <div class="w-100 mb-3"></div>
 
-          <div class="col-sm p-3 p-sm-3 text-left">
+          <div class="col-sm p-3 text-justify p-sm-3 text-left">
             <p>Je suis MAREGA Oumar, actuellement en dernière année de master 2 expert informatique & système d'informations : spécialité
               Architecte web et big data.
             </p>
@@ -58,6 +58,7 @@
                   <div class="card-body text-left">
                     <ul>
                       <li>Vuejs</li>
+                      <li>Angular</li>
                       <li>ReactJS</li>
                     </ul>
                   </div>
@@ -89,7 +90,7 @@
           <div class="col-sm p-3 p-sm-3 text-left">
             <h4 class="text-left">Autes languages</h4>
             <hr>
-            <span class="" >Avant de me spécialiser plus dans le développement web et mobile avec des languages comme <strong>PHP</strong> et <strong>javascript</strong>, jusqu'en Licence Informatique mes projets étaient principalement basés sur des langages comme : </span>
+            <span class="text-justify " >Avant de me spécialiser plus dans le développement web et mobile avec des languages comme <strong>PHP</strong> et <strong>javascript</strong>, jusqu'en Licence Informatique mes projets étaient principalement basés sur des langages comme : </span>
             <ul>
               <li>C/C++</li>
               <li>Java</li>
@@ -210,8 +211,10 @@ export default {
 hr{
   margin-top: 0px;
 }
-img{
-  width: 30px;
+.avatar img{
+  width: 100px;
+  height: 100px;
+  border-radius: 10px ;
 }
 
 input[type=text], select, textarea {
