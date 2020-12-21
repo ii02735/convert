@@ -11,7 +11,11 @@
         </p>
 
 
-
+        <div class="c-text">
+          <p>
+            Breaking news :
+          </p>
+        </div>
         <div id="carousel" class="carousel slide c-text" data-ride="carousel" data-bs-ride="carousel" data-interval="5000">
           <ol class="carousel-indicators">
             <li data-target="#carousel"  v-for="(item, index) in data" :key="index" :class="{ active: index==0 }" :data-slide-to="index"></li>

@@ -82,6 +82,9 @@ export default {
   min-height: 50px;
   text-align: center;
 }
+textarea {
+  resize: none;
+}
 </style>
 
 

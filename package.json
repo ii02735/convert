@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build && concurrently \"serve -s dist\" \"node ssr.js\" -k",
     "lint": "vue-cli-service lint",
     "ssr": "npm run build && concurrently \"serve -s dist\" \"node ssr.js\" -k"
   },
@@ -20,6 +20,7 @@
     "popper.js": "^1.16.1",
     "postscribe": "^2.0.8",
     "puppeteer": "^5.5.0",
+    "reverso-api": "^2.11.0",
     "vee-validate": "^2.2.15",
     "vue": "^2.6.11",
     "vue-router": "^3.4.3",

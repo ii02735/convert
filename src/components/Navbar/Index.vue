@@ -36,6 +36,10 @@
                         <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-link" :to="{name:'generate-password'}">Générer mot de passe</router-link>
                       </li>
 
+                      <!--<li class="nav-item">
+                        <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-link" :to="{name:'reverso'}">Correcteur orthographique - traduction</router-link>
+                      </li>-->
+
                     </ul>
                     <ul class="navbar-nav " data-children-count="1">
                       <li class="nav-item">
