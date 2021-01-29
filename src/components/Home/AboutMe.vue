@@ -18,6 +18,10 @@
               Je suis en alternance en tant que développeur informatique chez une entreprise de la place depuis 2
               ans.
             </p>
+            <p>
+              J'ai eu mon licence informatique à l'Université de Haute Alsace dans le Grand-Est.
+              La formation était orienté principalement dans le domaine du génie logiciel avec du C++ et Java avancé.
+            </p>
           </div>
 
           <div class="w-100 mb-3"></div>
@@ -87,16 +91,16 @@
 
           <div class="w-100 mb-3"></div>
 
-          <div class="col-sm p-3 p-sm-3 text-left">
+          <!--<div class="col-sm p-3 p-sm-3 text-left">
             <h4 class="text-left">Autes languages</h4>
             <hr>
-            <span class="text-justify " >Avant de me spécialiser plus dans le développement web et mobile avec des languages comme <strong>PHP</strong> et <strong>javascript</strong>, jusqu'en Licence Informatique mes projets étaient principalement basés sur des langages comme : </span>
+            <span class="text-justify ">Avant de me spécialiser plus dans le développement web et mobile avec des languages comme <strong>PHP</strong> et <strong>javascript</strong>, jusqu'en Licence Informatique mes projets étaient principalement basés sur des langages comme : </span>
             <ul>
               <li>C/C++</li>
               <li>Java</li>
               <li>Python</li>
             </ul>
-          </div>
+          </div>-->
         </div>
 
         <div class="row">

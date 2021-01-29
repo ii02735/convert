@@ -11,12 +11,12 @@
         </p>
 
 
-        <div class="c-text">
+        <!--<div class="c-text">
           <p>
             Breaking news :
           </p>
-        </div>
-        <div id="carousel" class="carousel slide c-text" data-ride="carousel" data-bs-ride="carousel" data-interval="5000">
+        </div>-->
+        <!--<div id="carousel" class="carousel slide c-text" data-ride="carousel" data-bs-ride="carousel" data-interval="5000">
           <ol class="carousel-indicators">
             <li data-target="#carousel"  v-for="(item, index) in data" :key="index" :class="{ active: index==0 }" :data-slide-to="index"></li>
           </ol>
@@ -33,11 +33,11 @@
 
                 </div>
               </div>
-            </div>
+            </div>-->
             <!-- /.carousel-item -->
-          </div>
+          <!--</div>-->
           <!-- /.carousel-inner -->
-          <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+         <!-- <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
           </a>
@@ -45,7 +45,7 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="text-danger sr-only">Next</span>
           </a>
-        </div>
+        </div>-->
         <!-- /.carousel -->
 
 
@@ -61,13 +61,13 @@ export default {
       data:[]
     }
   },
-  mounted(){
+  /*mounted(){
     this.$axios.get(this.$url_news).then(res => {
        this.data = res.data.articles;
     }).catch(e => {
       console.log(e);
     })
-  }
+  }*/
 }
 </script>
 <style scoped>
