@@ -1,4 +1,4 @@
-/*const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer');
 const fs = require("fs");
 
 // on définit une liste de constantes utilitaires
@@ -97,9 +97,9 @@ const ssr = async () => {
 }
 
 
-ssr();*/
+ssr();
 
-const express = require('express');
+/*const express = require('express');
 const app = express();
 const puppeteer = require('puppeteer');
 const port = process.env.PORT || 8080;
@@ -144,4 +144,4 @@ app.get('/', function(req, res) {
 
 app.listen(port, function() {
         console.log('App listening on port ' + port)
-})
+})*/

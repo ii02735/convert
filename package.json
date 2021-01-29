@@ -8,7 +8,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "heroku-postbuild": "concurrently \"serve -s dist\" \"node ssr.js\" -k",
+    "heroku-postbuild": "node ssr.js",
     "ssr": "npm run build && concurrently \"serve -s dist\" \"node ssr.js\" -k"
   },
   "dependencies": {
