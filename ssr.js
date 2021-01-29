@@ -6,10 +6,10 @@ const fs = require("fs");
 const buildDir = "dist";
 
 // celle-ci permet de déterminer le domaine
-const domain = "http://localhost:5000";
+const domain = process.env.host || "http://localhost:5000";
 
 // celle-ci permet de stocker les routes (url) à examiner
-const routes = ["http://localhost:5000/"];
+const routes = [domain+'/'];
 
 // celle-ci stocke les routes (url) déjà examinées
 const visited = [];
@@ -98,3 +98,50 @@ const ssr = async () => {
 
 
 ssr();
+
+/*const express = require('express');
+const app = express();
+const puppeteer = require('puppeteer');
+const port = process.env.PORT || 8080;
+const validUrl = require('valid-url');
+
+var parseUrl = function(url) {
+        url = decodeURIComponent(url)
+        if (!/^(?:f|ht)tps?\:\/\//.test(url)) {
+                url = 'http://' + url;
+        }
+
+        return url;
+};
+
+app.get('/', function(req, res) {
+        var urlToScreenshot = parseUrl(req.query.url);
+
+        console.log({urlToScreenshot});
+
+        if (validUrl.isWebUri(urlToScreenshot)) {
+                console.log('Screenshotting: ' + urlToScreenshot);
+                (async() => {
+                        const browser = await puppeteer.launch({
+                                args: ['--no-sandbox', '--disable-setuid-sandbox']
+                        });
+
+                        const page = await browser.newPage();
+                        await page.goto(urlToScreenshot);
+                        await page.screenshot().then(function(buffer) {
+                                res.setHeader('Content-Disposition', 'attachment;filename="' + urlToScreenshot + '.png"');
+                                res.setHeader('Content-Type', 'image/png');
+                                res.send(buffer)
+                        });
+
+                        await browser.close();
+                })();
+        } else {
+                res.send('Invalid url: ' + urlToScreenshot);
+        }
+
+});
+
+app.listen(port, function() {
+        console.log('App listening on port ' + port)
+})*/
