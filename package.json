@@ -7,8 +7,8 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build && concurrently \"serve -s dist\" \"node ssr.js\" -k",
-    "lint": "vue-cli-service lint",
+    "build": "vue-cli-service build",
+    "heroku-postbuild": "concurrently \"serve -s dist\" \"node ssr.js\" -k",
     "ssr": "npm run build && concurrently \"serve -s dist\" \"node ssr.js\" -k"
   },
   "dependencies": {
