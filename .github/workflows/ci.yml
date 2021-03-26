@@ -43,6 +43,9 @@ jobs:
       - name: Run ssr 👀
         run: npm run ssr
 
+      - name: node ssr
+        run: node ssr.js && npm run kill
+
       #commit in github_pages
       # Deploy to local repo
       - name: Deploy

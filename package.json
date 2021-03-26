@@ -8,8 +8,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "heroku-postbuild": "node ssr.js",
-    "ssr": "npm run build && serve -s dist && node ssr.js"
+    "ssr": "pm2 start serve.sh",
+    "dist": "serve -s dist",
+    "kill": "pm2 kill",
+    "heroku-postbuild": "node ssr.js"
   },
   "dependencies": {
     "axios": "^0.20.0",
@@ -22,6 +24,7 @@
     "github-profile-card-component": "^1.0.22",
     "jquery": "^3.5.1",
     "mathjs": "^7.5.0",
+    "pm2": "^4.5.5",
     "popper.js": "^1.16.1",
     "postscribe": "^2.0.8",
     "puppeteer": "^5.5.0",
