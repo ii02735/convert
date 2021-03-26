@@ -40,11 +40,10 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: npm ci
 
-      - name: Run ssr 👀
-        run: npm run ssr
-
-      - name: node ssr
-        run: node ssr.js && npm run kill
+      - name: Run crawler 👀
+        run: npm run crawl
+        env:
+           CI: true # enable headless mode for puppeteer
 
       #commit in github_pages
       # Deploy to local repo
