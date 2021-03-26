@@ -45,6 +45,9 @@
                       <li class="nav-item">
                         <router-link data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-link" :to="{name:'me'}">Qui suis je ? </router-link>
                       </li>
+                      <li class="nav-item">
+                        <a @click="darkThemeSwitch" href="#" data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-link">mode </a>
+                      </li>
                     </ul>
                 </div>
             </article>
@@ -54,7 +57,32 @@
 
 <script>
     export default {
-        name: "Index"
+        name: "Index",
+      methods: {
+        _addDarkTheme() {
+          let darkThemeLinkEl = document.createElement("link");
+          darkThemeLinkEl.setAttribute("rel", "stylesheet");
+          darkThemeLinkEl.setAttribute("href", "/css/darktheme.css");
+          darkThemeLinkEl.setAttribute("id", "dark-theme-style");
+
+          let docHead = document.querySelector("head");
+          docHead.append(darkThemeLinkEl);
+        },
+        _removeDarkTheme() {
+          let darkThemeLinkEl = document.querySelector("#dark-theme-style");
+          let parentNode = darkThemeLinkEl.parentNode;
+          parentNode.removeChild(darkThemeLinkEl);
+        },
+        darkThemeSwitch() {
+          let darkThemeLinkEl = document.querySelector("#dark-theme-style");
+          if (!darkThemeLinkEl) {
+            this._addDarkTheme()
+          } else {
+            this._removeDarkTheme()
+          }
+        }
+      }
+
     }
 </script>
 

@@ -129,7 +129,7 @@
               <label for="fname">Prénom</label>
               <input type="text" v-model="form.first_name" id="fname" v-validate="'required|alpha_dash'" name="firstname" placeholder="Votre prénom..">
               <div v-if="errors.first('firstname')" class=" mt-3 alert alert-danger" role="alert">
-                {{errors.first('firstname')?'Le champ prénom est requis':''}}
+                  {{errors.first('firstname')?'Le champ prénom est requis':''}}
               </div>
 
               <label for="lname">Nom</label>
