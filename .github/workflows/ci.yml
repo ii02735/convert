@@ -44,7 +44,7 @@ jobs:
         run: npm run lint
 
       - name: Run ssr 👀
-          run: npm run ssr
+        run: npm run ssr
 
       #commit in github_pages
       # Deploy to local repo
