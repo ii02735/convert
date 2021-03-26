@@ -9,7 +9,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "heroku-postbuild": "node ssr.js",
-    "ssr": "npm run build && concurrently \"serve -s dist\" \"node ssr.js\" -k"
+    "ssr": "npm run build && serve -s dist && node ssr.js"
   },
   "dependencies": {
     "axios": "^0.20.0",
