@@ -1,4 +1,3 @@
 #!/bin/sh
 
-npm run build
-npm run dist
+npm run build && npm run dist
