@@ -34,13 +34,13 @@ jobs:
       - name: Install dependencies 👨🏻‍💻
         run: npm ci
         
-      - name : caching data for next job 
+      - name: Cache node_modules 📦
         uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
         with:
-          key: ${{ runner.os }}-nodemodules
-          path: .
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
   crawl:
      needs: [build]
@@ -50,11 +50,16 @@ jobs:
       - name: Checkout 🛎
         uses: actions/checkout@master
 
-      - name: cache restoring for nodemodules
+      - name: Restore node_modules 📦
         uses: actions/cache@v2
         with:
-          key: ${{ runner.os }}-nodemodules
-          path: .
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: "display content after cache restoring"
+        run: "ls -l"
 
       - name: docker-compose for dist-server
         run: docker-compose up -d
