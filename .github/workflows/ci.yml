@@ -39,7 +39,7 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          name: ${{ runner.os }}-nodemodules
+          key: ${{ runner.os }}-nodemodules
           path: .
 
   crawl:
@@ -50,7 +50,7 @@ jobs:
       - name: cache restoring
         uses: actions/cache@v2
         with:
-          name: ${{ runner.os }}-nodemodules
+          key: ${{ runner.os }}-nodemodules
           path: .
 
       - name: docker-compose for dist-server
