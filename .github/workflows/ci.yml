@@ -11,21 +11,13 @@ on:
   
 
 jobs:
-  ci:
+  build:
     runs-on: ${{ matrix.os }} #preciser os du container
 
     strategy:
       matrix:
         os: [ubuntu-latest]
         node: [14]
-
-    services:
-      node:
-        image: node:14
-        working_dir: /app
-        volumes:
-           - "./:/app"
-        command: npm ci && npm build && npm dist
         
     steps:
       - name: Checkout 🛎
@@ -49,6 +41,25 @@ jobs:
 
       - name: Install dependencies 👨🏻‍💻
         run: npm ci
+        
+      - name : caching data for next job 
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          name: ${{ runner.os }}-nodemodules
+          path: .
+
+  crawl:
+     needs: [build]
+     runs-on: ${{ os.matrix }}
+     
+     steps:
+      - name: cache restoring
+        uses: actions/cache@v2
+        with:
+          name: ${{ runner.os }}-nodemodules
+          path: .
 
       - name: docker-compose for dist-server
         run: docker-compose up -d
