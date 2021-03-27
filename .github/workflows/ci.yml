@@ -38,7 +38,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ github.run_id }}-node-${{ hashFiles('**/package-lock.json') }}
 
   crawl:
      needs: [build]
@@ -52,10 +52,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: '**/node_modules'
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
+          key: ${{ github.run_id }}-node-${{ hashFiles('**/package-lock.json') }}
+        
       - name: "display content after cache restoring"
         run: "ls -l"
 
