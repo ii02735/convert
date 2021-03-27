@@ -6,7 +6,7 @@ const fs = require("fs");
 const buildDir = "dist";
 
 // celle-ci permet de déterminer le domaine
-const domain = process.env.host || "http://localhost:5000";
+const domain = "http://localhost:5000";
 
 // celle-ci permet de stocker les routes (url) à examiner
 const routes = [domain+'/'];
