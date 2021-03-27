@@ -40,6 +40,9 @@ jobs:
      
       - name: Run crawler 👀
         run: npm run crawl
+        env:
+          max_retries: 4
+          interval: 3000
         timeout-minutes: 3
       
       # commit in github_pages
