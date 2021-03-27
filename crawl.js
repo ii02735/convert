@@ -96,32 +96,28 @@ const ssr = async (routes,domain,visited) => {
                 const urlExist = require("url-exist-sync")
                 const domain = "http://localhost:5000";
                 let exists = urlExist(domain)
-                let maxRetries = 10;
+                let maxRetries = Number(process.env.max_retries) || 5;
+                const interval = Number(process.env.interval) || 3000
                 // celle-ci permet de stocker les routes (url) à examiner
                 const routes = [domain+'/'];
 
                 // celle-ci stocke les routes (url) déjà examinées
                 const visited = [];
-                while(!exists && maxRetries != 0)
+                for(let i = 0; (i<maxRetries && !exists); i++)
                 {
-                     console.log(`${domain} cannot be reached : retrying...`)
-                     exists = urlExist(domain)
-                     maxRetries--
+                     setTimeout(() => {
+                             console.log(`${domain} cannot be reached : retrying...`)
+                             exists = urlExist(domain)
+                     },interval * i)
                 }
-                if(exists)
-                {
-                        await ssr(routes,domain,visited)
-                }else{
-                        throw new Error("domain couldn't be reached...")
-                }
-                // celle-ci permet de déterminer le domaine
-                
-
-                
-
-
-                
-                // await ssr(routes,maxRetries,domain,visited)
+                // This instruction must be run at the end
+                // That's why the timeout execution is the longest here
+                setTimeout(async () => {
+                        if(exists)
+                                await ssr(routes,domain,visited)
+                        else
+                                throw new Error("domain couldn't be reached...")
+                },interval * maxRetries)
         }
 )();
 
