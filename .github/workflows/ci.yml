@@ -44,7 +44,7 @@ jobs:
 
   crawl:
      needs: [build]
-     runs-on: ${{ matrix.os }}
+     runs-on: ubuntu:latest
      
      steps:
       - name: cache restoring
