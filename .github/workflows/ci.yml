@@ -37,6 +37,7 @@ jobs:
 
       - name: Run crawler 👀
         run: npm run crawl
+        timeout-minutes: 3
       
       # commit in github_pages
       # Deploy to local repo
