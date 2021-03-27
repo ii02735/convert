@@ -47,7 +47,10 @@ jobs:
      runs-on: ubuntu-latest
      
      steps:
-      - name: cache restoring
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - name: cache restoring for nodemodules
         uses: actions/cache@v2
         with:
           key: ${{ runner.os }}-nodemodules
