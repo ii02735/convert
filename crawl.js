@@ -5,27 +5,19 @@ const fs = require("fs");
 // cette constante permet de définir le dossier dans lequel mes fichier seront enregistrés
 const buildDir = "dist";
 
-// celle-ci permet de déterminer le domaine
-const domain = "http://localhost:5000";
-
-// celle-ci permet de stocker les routes (url) à examiner
-const routes = [domain+'/'];
-
-// celle-ci stocke les routes (url) déjà examinées
-const visited = [];
 
 // cette fonction permet de faire un rendu d'une route (url)
 // et d'en enregistrer le contenu dans un fichier.
 // l'ensemble des liens (<a></a>) du conenu sont récupérés
 // et si leur propriétés href pointe avec un lien non visité
 // alors elles sont rajouté au tableau de routes à visiter
-const ssr = async () => {
+const ssr = async (routes,domain,visited) => {
 
         // on définit l'url à visiter, il s'agit du premier élément du tableau de routes
         // que l'on extirpe de ce dernier à l'aide de la méthode shift des objets de type tableau
         const url = routes.shift();
-
-        // console.log("myurl",url);
+       
+        console.log("myurl",url);
 
         if(!url.includes('oumar-marega?trk=profile-badge')){
                 // on détermine le chemin par rapport à la racine du domaine
@@ -48,8 +40,8 @@ const ssr = async () => {
                 const page = await browser.newPage();
 
                 // une fois la page créée, on se rend à l'adresse url suivante
+        
                 await page.goto(url);
-
                 // ici on récupère le contenu html de notre page
                 const html = await page.content();
 
@@ -63,13 +55,13 @@ const ssr = async () => {
                 // on évalue la page, çàd qu'on lance une fonctionnalité permettant
                 // d'analyser l'ensemble du document html.
                 const links = await page.evaluate(
-                    // Ici on récupère l'ensemble des balises a
-                    // ce qui nous retourne une NodeList que l'on convertit en tableau
-                    // à l'aide de Array.from.
-                    // Une fois notre tableau obtenu, on peut utiliser la méthode map
-                    // des objets de type Array afin de retourner un tableau
-                    // contenant uniquement les href de nos balises <a>
-                    () => Array.from(document.querySelectorAll("a"))
+                // Ici on récupère l'ensemble des balises a
+                // ce qui nous retourne une NodeList que l'on convertit en tableau
+                // à l'aide de Array.from.
+                // Une fois notre tableau obtenu, on peut utiliser la méthode map
+                // des objets de type Array afin de retourner un tableau
+                // contenant uniquement les href de nos balises <a>
+                () => Array.from(document.querySelectorAll("a"))
                         .map( link => link.href )
 
                 );
@@ -84,7 +76,7 @@ const ssr = async () => {
                 // non visitées obtenues précédemment.
                 routes.push(...unvisited);
 
-		// console.log(routes);
+                console.log(routes);
 
                 // on ferme le navigateur
                 await browser.close();
@@ -92,13 +84,47 @@ const ssr = async () => {
                 // Si le tableau de routes contient encore une route alors
                 // on relance la fonction ssr dans 100 ms
                 if( routes.length > 0)
-                        setTimeout( ssr, 100 );
-        }
+                        setTimeout(async () => await ssr(routes,domain,visited), 100 );
+        
+
+        }         
+
 };
 
-    
-	
-ssr();
+(
+        async() => {
+                const urlExist = require("url-exist-sync")
+                const domain = "http://localhost:5000";
+                let exists = urlExist(domain)
+                let maxRetries = 10;
+                // celle-ci permet de stocker les routes (url) à examiner
+                const routes = [domain+'/'];
+
+                // celle-ci stocke les routes (url) déjà examinées
+                const visited = [];
+                while(!exists && maxRetries != 0)
+                {
+                     console.log(`${domain} cannot be reached : retrying...`)
+                     exists = urlExist(domain)
+                     maxRetries--
+                }
+                if(exists)
+                {
+                        await ssr(routes,domain,visited)
+                }else{
+                        throw new Error("domain couldn't be reached...")
+                }
+                // celle-ci permet de déterminer le domaine
+                
+
+                
+
+
+                
+                // await ssr(routes,maxRetries,domain,visited)
+        }
+)();
+
 
 
 
