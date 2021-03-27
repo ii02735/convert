@@ -68,10 +68,6 @@ Vue.use(VeeValidate);
         component: () => import(/* webpackChunkName: "about" */ '@/components/Home/AboutMe'),
       }
     ]
-  },
-  {
-    path: "*",
-    redirect: "/"
   }
 ]
 
