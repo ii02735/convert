@@ -52,7 +52,7 @@ jobs:
 
   crawl:
      needs: [build]
-     runs-on: ${{ os.matrix }}
+     runs-on: ${{ matrix.os }}
      
      steps:
       - name: cache restoring
