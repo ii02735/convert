@@ -25,7 +25,7 @@ const ssr = async () => {
         // que l'on extirpe de ce dernier à l'aide de la méthode shift des objets de type tableau
         const url = routes.shift();
 
-        console.log("myurl",url);
+        // console.log("myurl",url);
 
         if(!url.includes('oumar-marega?trk=profile-badge')){
                 // on détermine le chemin par rapport à la racine du domaine
@@ -42,7 +42,7 @@ const ssr = async () => {
 
                 // on crée une nouvelle instance d'un navigateur
                 // en gros, on ouvre chrome (mais en ligne de commande)
-                const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
+                const browser = await puppeteer.launch();
 
                 // on crée une nouvelle page (on ouvre un nouvel onglet)
                 const page = await browser.newPage();
@@ -84,7 +84,7 @@ const ssr = async () => {
                 // non visitées obtenues précédemment.
                 routes.push(...unvisited);
 
-                console.log(routes);
+		// console.log(routes);
 
                 // on ferme le navigateur
                 await browser.close();
@@ -94,10 +94,14 @@ const ssr = async () => {
                 if( routes.length > 0)
                         setTimeout( ssr, 100 );
         }
-}
+};
 
-
+    
+	
 ssr();
+
+
+
 
 /*const express = require('express');
 const app = express();
@@ -121,7 +125,7 @@ app.get('/', function(req, res) {
 
         if (validUrl.isWebUri(urlToScreenshot)) {
                 console.log('Screenshotting: ' + urlToScreenshot);
-                (async() => {
+                async() => {
                         const browser = await puppeteer.launch({
                                 args: ['--no-sandbox', '--disable-setuid-sandbox']
                         });
