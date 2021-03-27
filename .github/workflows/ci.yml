@@ -32,9 +32,12 @@ jobs:
           check-latest: true
 
       - name: Install dependencies 👨🏻‍💻
-        run: npm ci && docker-compose up -d
-        
-
+        run: npm ci
+      
+      - name: Build and run dist-server
+        run: npm run build && docker-compose up -d
+        timeout-minutes: 2
+     
       - name: Run crawler 👀
         run: npm run crawl
         timeout-minutes: 3
